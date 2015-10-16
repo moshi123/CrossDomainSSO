@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/App1/App1.iml" filepath="$PROJECT_DIR$/App1/App1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/App2/App2.iml" filepath="$PROJECT_DIR$/App2/App2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Common/Common.iml" filepath="$PROJECT_DIR$/Common/Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CrossDomainSSO.iml" filepath="$PROJECT_DIR$/CrossDomainSSO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSOClient/SSOClient.iml" filepath="$PROJECT_DIR$/SSOClient/SSOClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSOServer/SSOServer.iml" filepath="$PROJECT_DIR$/SSOServer/SSOServer.iml" />
+    </modules>
+  </component>
+</project>

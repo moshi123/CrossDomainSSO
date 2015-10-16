@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="App2:war exploded">
+    <output-path>$PROJECT_DIR$/App2/target/App2</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="App2" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="SSOClient-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="SSOClient" />
+          </element>
+          <element id="archive" name="Common-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Common" />
+          </element>
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/App2/target/App2/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="App2/web/Web" />
+    </root>
+  </artifact>
+</component>

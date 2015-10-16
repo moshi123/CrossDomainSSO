@@ -1,0 +1,44 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="SSOServer:war exploded">
+    <output-path>$PROJECT_DIR$/SSOServer/target/SSOServer</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SSOServer" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="Common-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="Common" />
+          </element>
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.5" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.3.0" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.3" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.13" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.34" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.6" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.6" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/SSOServer/target/SSOServer/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="SSOServer/web/Web" />
+    </root>
+  </artifact>
+</component>

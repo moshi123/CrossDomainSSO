@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SSOServer:war">
+    <output-path>$PROJECT_DIR$/SSOServer/target</output-path>
+    <root id="archive" name="SSOServer.war">
+      <element id="artifact" artifact-name="SSOServer:war exploded" />
+    </root>
+  </artifact>
+</component>
