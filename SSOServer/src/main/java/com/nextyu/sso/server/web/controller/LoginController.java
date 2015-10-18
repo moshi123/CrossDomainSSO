@@ -46,7 +46,7 @@ public class LoginController {
             if (lt == null) {// LT不存在
                 return config.getLoginViewName();
             } else {// LT存在
-                // TODO:自动登录流程
+                // TODO 自动登录流程
                 return null;
             }
         } else {// VT存在
@@ -78,6 +78,16 @@ public class LoginController {
 
     }
 
+    /**
+     * 登录验证.
+     *
+     * @param redirectURL
+     * @param rememberMe
+     * @param request
+     * @param response
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String redirectURL, Boolean rememberMe, HttpServletRequest request, HttpServletResponse response, Model model) {
 
