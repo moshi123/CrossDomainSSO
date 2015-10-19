@@ -40,14 +40,14 @@
     </p>
     <ul>
         <c:forEach items="${sysList }" var="sys">
-            <li><a href="${sys.homeUrl }" target="_blank">${sys.name}</a></li>
+            <li><a href="${sys.homeURL }" target="_blank">${sys.name}</a></li>
         </c:forEach>
     </ul>
 </c:if>
 
 <!-- 为每个业务系统设置cookie -->
 <c:forEach items="${sysList}" var="sys">
-    <script type="text/javascript" src="${sys.baseUrl}/cookie/set?vt=${VT}"></script>
+    <script type="text/javascript" src="${sys.baseURL}/cookie/set?vt=${VT}"></script>
 </c:forEach>
 
 </body>

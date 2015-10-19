@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * 应用配置信息.
@@ -103,7 +104,20 @@ public class Config implements ResourceLoaderAware {
      * @return
      */
     public List<ClientSystem> getClientSystems(LoginUser loginUser) {
-        return null;
+        Set<String> authenticatedSystemIds = authenticationHandler.authenticatedSystemIds(loginUser);
+        // null表示允许全部
+        if (authenticatedSystemIds == null) {
+            return clientSystems;
+        }
+
+
+        List<ClientSystem> authenticatedSystems = new ArrayList<>();
+        for (ClientSystem clientSystem : clientSystems) {
+            if (authenticatedSystemIds.contains(clientSystem.getId())) {
+                authenticatedSystems.add(clientSystem);
+            }
+        }
+        return authenticatedSystems;
     }
 
     /**

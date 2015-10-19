@@ -6,6 +6,8 @@ import com.nextyu.sso.server.domain.LoginUser;
 import com.nextyu.sso.server.service.AuthenticationHandler;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 /**
  * @author nextyu
  * @version 1.0
@@ -31,6 +33,11 @@ public class CaptchaAuthenticationHandlerImpl implements AuthenticationHandler {
             return loginUser;
         }
         credential.setError("用户名或者密码错误");
+        return null;
+    }
+
+    @Override
+    public Set<String> authenticatedSystemIds(LoginUser loginUser) {
         return null;
     }
 }
