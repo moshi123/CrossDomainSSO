@@ -2,6 +2,7 @@ package com.nextyu.sso.common.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.UUID;
 
 /**
  * @author nextyu
@@ -35,5 +36,9 @@ public class StringUtil {
             return null;
         }
 
+    }
+
+    public static String uniqueKey() {
+        return UUID.randomUUID().toString().replace("-", "").toLowerCase();
     }
 }

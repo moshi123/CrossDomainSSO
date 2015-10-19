@@ -27,7 +27,7 @@ public class TokenManager {
     private static final Timer timer = new Timer(true);
 
     static {
-        // 定时任务，1分钟执行一次
+        // 定时任务，1分钟执行一次，用来管理令牌的有效期
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -36,7 +36,7 @@ public class TokenManager {
                     Token token = entry.getValue();
                     Date expired = token.expired;
                     Date now = new Date();
-
+                    logger.debug("执行定时任务");
                     // 当前时间大于过期时间
                     if (now.compareTo(expired) > 0) {
                         // 因为令牌支持自动延期服务，并且应用客户端缓存机制后，

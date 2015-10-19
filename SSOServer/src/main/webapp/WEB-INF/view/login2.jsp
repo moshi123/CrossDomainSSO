@@ -15,7 +15,23 @@
             $("form").submit(function () {
                 Cookie.set(UNAME_COOKIE_NAME, $.trim(eleName.val()), null, 7 * 24 * 60, null, null);
             });
+
+            // 加载验证码
+            drawCaptcha();
+
         });
+
+        /**
+         * 画验证码.
+         */
+        function drawCaptcha() {
+            $.ajax("${path}/preLogin").done(function (data) {
+                console.log(data);
+                $("#captchaImg").attr("src", data.imgData);
+            }).fail(function () {
+                alert("验证码加载失败");
+            });
+        }
     </script>
 </head>
 <body>
@@ -28,6 +44,12 @@
         <p>账号：<input type="text" name="name" autocomplete="off"/></p>
 
         <p>密码：<input type="password" name="password" autocomplete="off"/></p>
+
+        <p>验证码：<input style="width:80px;" type="text" name="captcha" autocomplete="off"/><img src=""
+                                                                                              onclick="drawCaptcha();"
+                                                                                              id="captchaImg"
+                                                                                              style="cursor:pointer;">
+        </p>
 
         <p><input type="submit" value="登录"/></p>
     </form>

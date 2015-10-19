@@ -53,10 +53,10 @@
 
 
     <!-- 应用配置信息 -->
-    <bean id="config" class="com.nextyu.sso.server.util.Config">
-        <property name="loginViewName" value="login"/>
-        <property name="tokenTimeout" value="30"/>
-        <property name="authenticationHandler" ref="demoAuthenticationHandlerImpl"/>
+    <bean id="config" class="com.nextyu.sso.server.util.Config" init-method="refreshConfig" destroy-method="destroy">
+        <property name="loginViewName" value="login2"/>
+        <property name="authenticationHandler" ref="captchaAuthenticationHandlerImpl"/>
+        <property name="preLoginHandler" ref="captchaPreLoginHandlerImpl"/>
     </bean>
 
 </beans>

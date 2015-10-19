@@ -11,9 +11,20 @@ import org.springframework.stereotype.Service;
  * @version 1.0
  */
 @Service
-public class DemoAuthenticationHandlerImpl implements AuthenticationHandler {
+public class CaptchaAuthenticationHandlerImpl implements AuthenticationHandler {
     @Override
     public LoginUser authenticate(Credential credential) {
+
+        // 获取session中保存的验证码
+        String sessionCode = (String) credential.getSettedSessionValue();
+        String captcha = credential.getParameter("captcha");
+
+        if (!captcha.equalsIgnoreCase(sessionCode)) {
+            credential.setError("验证码错误");
+            return null;
+        }
+
+
         if ("admin".equals(credential.getParameter("name")) && "123".equals(credential.getParameter("password"))) {
             DemoLoginUser loginUser = new DemoLoginUser();
             loginUser.setLoginName("admin");

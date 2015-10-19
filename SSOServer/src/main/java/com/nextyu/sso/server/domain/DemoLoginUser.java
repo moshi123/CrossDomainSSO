@@ -14,4 +14,9 @@ public class DemoLoginUser extends LoginUser {
     public void setLoginName(String loginName) {
         this.loginName = loginName;
     }
+
+    @Override
+    public String toString() {
+        return loginName;
+    }
 }
