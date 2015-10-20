@@ -5,6 +5,7 @@ import com.nextyu.sso.server.domain.ClientSystem;
 import com.nextyu.sso.server.domain.LoginUser;
 import com.nextyu.sso.server.service.AuthenticationHandler;
 import com.nextyu.sso.server.service.PreLoginHandler;
+import com.nextyu.sso.server.service.UserSerializer;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -53,6 +54,11 @@ public class Config implements ResourceLoaderAware {
     private PreLoginHandler preLoginHandler;
 
     /**
+     * 用户信息序列化工具.
+     */
+    private UserSerializer userSerializer;
+
+    /**
      * 客户端系统列表.
      */
     private List<ClientSystem> clientSystems = new ArrayList<>();
@@ -87,6 +93,14 @@ public class Config implements ResourceLoaderAware {
 
     public void setPreLoginHandler(PreLoginHandler preLoginHandler) {
         this.preLoginHandler = preLoginHandler;
+    }
+
+    public UserSerializer getUserSerializer() {
+        return userSerializer;
+    }
+
+    public void setUserSerializer(UserSerializer userSerializer) {
+        this.userSerializer = userSerializer;
     }
 
     public List<ClientSystem> getClientSystems() {

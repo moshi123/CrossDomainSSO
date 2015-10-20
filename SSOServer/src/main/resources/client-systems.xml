@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <systems>
-    <system id="oa" name="OA系统">
-        <baseURL>http://www.oa.com</baseURL>
+    <system id="app1" name="app1系统">
+        <baseURL>http://www.app1.com:8081</baseURL>
         <homeURI>/index.html</homeURI>
         <innerAddress>http://192.168.0.151</innerAddress>
     </system>
-    <system id="crm" name="客户管理系统">
-        <baseURL>http://www.crm.com</baseURL>
+    <system id="app2" name="app2系统">
+        <baseURL>http://www.app2.com:8082</baseURL>
         <homeURI>/index.jsp</homeURI>
         <innerAddress>http://192.168.0.152</innerAddress>
     </system>

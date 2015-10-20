@@ -57,6 +57,7 @@
         <property name="loginViewName" value="login2"/>
         <property name="authenticationHandler" ref="captchaAuthenticationHandlerImpl"/>
         <property name="preLoginHandler" ref="captchaPreLoginHandlerImpl"/>
+        <property name="userSerializer" ref="demoUserSerializer"/>
     </bean>
 
 </beans>

@@ -23,5 +23,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="SSOClient" />
     <orderEntry type="module" module-name="Common" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.6" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.5.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.0" level="project" />
   </component>
 </module>

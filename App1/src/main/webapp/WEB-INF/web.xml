@@ -14,7 +14,7 @@
         </init-param>
         <init-param>
             <param-name>serverBaseUrl</param-name>
-            <param-value>http://localhost:8080</param-value>
+            <param-value>http://www.server.com:8080</param-value>
         </init-param>
         <init-param>
             <param-name>serverInnerAddress</param-name>
