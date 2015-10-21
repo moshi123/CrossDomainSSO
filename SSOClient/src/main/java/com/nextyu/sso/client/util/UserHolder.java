@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
  * @version 1.0
  */
 public class UserHolder {
+
+    private static final String REQ_USER_ATTR_NAME = "__current_sso_user";
+
     // 将当前登录用户信息存放到ThreadLocal中，这样在没有单独开线程的情况下，业务系统任意代码位置都可以取得当前user
     public static final ThreadLocal<SSOUser> USER_THREAD_LOCAL = new ThreadLocal<>();
 
@@ -33,7 +36,18 @@ public class UserHolder {
      * @return
      */
     public static SSOUser getUser(HttpServletRequest request) {
-        return (SSOUser) request.getAttribute("__current_sso_user");
+        return (SSOUser) request.getAttribute(REQ_USER_ATTR_NAME);
+    }
+
+    /**
+     * 用户加入到request和threadLocal供业务系统调用.
+     *
+     * @param user
+     * @param request
+     */
+    public static void set(SSOUser user, HttpServletRequest request) {
+        request.setAttribute(REQ_USER_ATTR_NAME, user);
+        USER_THREAD_LOCAL.set(user);
     }
 
 }

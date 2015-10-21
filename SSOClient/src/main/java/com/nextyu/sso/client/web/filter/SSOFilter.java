@@ -126,8 +126,7 @@ public class SSOFilter implements Filter {
      * @param req
      */
     private void holdUser(SSOUser user, HttpServletRequest req) {
-        UserHolder.USER_THREAD_LOCAL.set(user);
-        req.setAttribute("__current_sso_user", user);
+        UserHolder.set(user, req);
     }
 
     /**
