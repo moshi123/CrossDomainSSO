@@ -25,6 +25,8 @@
         <p style="color:red;font-weight:bold;">${errorMsg}</p>
     </c:if>
     <form action="${path}/login" method="post">
+        <input type="hidden" name="redirectURL" value="${param.redirectURL}">
+
         <p>账号：<input type="text" name="name" autocomplete="off"/></p>
 
         <p>密码：<input type="password" name="password" autocomplete="off"/></p>
@@ -47,7 +49,7 @@
 
 <!-- 为每个业务系统设置cookie -->
 <c:forEach items="${sysList}" var="sys">
-    <script type="text/javascript" src="${sys.baseURL}/cookie/set?vt=${VT}"></script>
+    <script type="text/javascript" src="${sys.baseURL}/cookie_set?vt=${VT}"></script>
 </c:forEach>
 
 </body>

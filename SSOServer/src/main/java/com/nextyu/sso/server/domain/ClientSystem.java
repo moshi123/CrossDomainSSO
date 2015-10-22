@@ -1,6 +1,11 @@
 package com.nextyu.sso.server.domain;
 
+import com.nextyu.sso.common.util.StringUtil;
+
+import java.io.InputStream;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Date;
 
 /**
@@ -85,8 +90,16 @@ public class ClientSystem implements Serializable {
      * @return
      */
     public Date noticeTimeout(String vt, int tokenTimeout) {
-        // TODO 与客户端通信处理有效期
-        return null;
+        String url = innerAddress + "/notice/timeout?vt=" + vt + "&tokenTimeout=" + tokenTimeout;
+        try {
+            String result = httpAccess(url);
+            return StringUtil.isEmpty(result) ? null : new Date(Long.parseLong(result));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
     }
 
     /**
@@ -94,15 +107,46 @@ public class ClientSystem implements Serializable {
      *
      * @param vt
      */
-    public void noticeLogout(String vt) {
-        // TODO 通知客户端用户退出
+    public boolean noticeLogout(String vt) {
+        String url = innerAddress + "/notice/logout?vt=" + vt;
+        try {
+            String result = httpAccess(url);
+            return Boolean.parseBoolean(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
      * 通知客户端服务端关闭，客户端收到信息后执行清除缓存操作.
      */
-    public void noticeShutdown() {
-        // TODO 通知客户端服务端关闭，客户端收到信息后执行清除缓存操作
+    public boolean noticeShutdown() {
+        String url = innerAddress + "/notice/shutdown";
+        try {
+            String result = httpAccess(url);
+            return Boolean.parseBoolean(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private String httpAccess(String theUrl) throws Exception {
+        URL url = new URL(theUrl);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setConnectTimeout(500);
+        InputStream is = conn.getInputStream();
+        conn.connect();
+
+        byte[] buff = new byte[is.available()];
+        is.read(buff);
+        String ret = new String(buff, "utf-8");
+
+        conn.disconnect();
+        is.close();
+
+        return ret;
     }
 
 }

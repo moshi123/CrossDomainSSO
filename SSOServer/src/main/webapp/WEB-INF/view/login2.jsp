@@ -4,6 +4,7 @@
 <head>
     <title></title>
     <script type="text/javascript" src="${path}/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="${path}/js/md5.js"></script>
     <script type="text/javascript" src="${path}/js/cookieUtil.js"></script>
     <script type="text/javascript">
         var UNAME_COOKIE_NAME = "lastLoginUserName";
@@ -14,6 +15,11 @@
             // 登录按钮被点击时记住当前name
             $("form").submit(function () {
                 Cookie.set(UNAME_COOKIE_NAME, $.trim(eleName.val()), null, 7 * 24 * 60, null, null);
+
+                // 将密码字段使用 MD5(MD5(密码) + 验证码）编码后发给服务端
+                var elePasswd = $("input[name=passwd]");
+                var passwd = elePasswd.val();
+                elePasswd.val($.md5($.md5(passwd) + $("input[name=captcha]").val()));
             });
 
             // 加载验证码
@@ -41,6 +47,7 @@
         <p style="color:red;font-weight:bold;">${errorMsg}</p>
     </c:if>
     <form action="${path}/login" method="post">
+        <input type="hidden" name="redirectURL" value="${param.redirectURL}">
         <p>账号：<input type="text" name="name" autocomplete="off"/></p>
 
         <p>密码：<input type="password" name="password" autocomplete="off"/></p>
@@ -69,7 +76,7 @@
 
 <!-- 为每个业务系统设置cookie -->
 <c:forEach items="${sysList}" var="sys">
-    <script type="text/javascript" src="${sys.baseURL}/cookie/set?vt=${VT}"></script>
+    <script type="text/javascript" src="${sys.baseURL}/cookie_set?vt=${VT}"></script>
 </c:forEach>
 
 </body>

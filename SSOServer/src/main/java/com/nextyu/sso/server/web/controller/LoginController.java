@@ -44,14 +44,15 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(String redirectURL, HttpServletRequest request, Model model) {
+    public String login(String redirectURL, Boolean notLogin, HttpServletRequest request, Model model) {
         // VT:Validate Token(令牌)
         // LT:Login Ticket(自动登录标识)
         String vt = CookieUtil.getCookie(request, "VT");
         if (vt == null) {// VT不存在
             String lt = CookieUtil.getCookie(request, "LT");
             if (lt == null) {// LT不存在
-                return config.getLoginViewName();
+                // return config.getLoginViewName();
+                return authFailed(notLogin, redirectURL);
             } else {// LT存在
                 // TODO 自动登录流程
                 return null;
@@ -60,11 +61,26 @@ public class LoginController {
             // 验证VT
             LoginUser loginUser = TokenManager.validate(vt);
             if (loginUser == null) {// VT无效
-                return config.getLoginViewName();
+                // return config.getLoginViewName();
+                return authFailed(notLogin, redirectURL);
             } else {// VT有效
                 return validateSuccess(redirectURL, vt, loginUser, model);
             }
         }
+    }
+
+    /**
+     * 授权认证失败时返回的内容设置.
+     *
+     * @param notLogin
+     * @param redirectURL
+     * @return
+     */
+    private String authFailed(Boolean notLogin, String redirectURL) {
+        if (notLogin != null && notLogin) {
+            return "redirect:"+StringUtil.appendURLParam(redirectURL, "__vt_param__", "");
+        }
+        return config.getLoginViewName();
     }
 
     /**
@@ -86,7 +102,7 @@ public class LoginController {
             return config.getLoginViewName();
         } else {
             // 有redirectURL
-            return "redirect:" + StringUtil.appendURLParam(redirectURL, "VT", vt);
+            return "redirect:" + StringUtil.appendURLParam(redirectURL, "__vt_param__", vt);
         }
 
     }
@@ -207,6 +223,8 @@ public class LoginController {
         TokenManager.addToken(vt, loginUser);
         // 写Cookie
         Cookie cookie = new Cookie("VT", vt);
+        response.setHeader("P3P",
+                "CP=\"CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR\"");
         response.addCookie(cookie);
         return vt;
     }

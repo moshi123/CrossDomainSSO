@@ -1,5 +1,6 @@
 package com.nextyu.sso.server.service.impl;
 
+import com.nextyu.sso.common.util.MD5;
 import com.nextyu.sso.server.domain.Credential;
 import com.nextyu.sso.server.domain.DemoLoginUser;
 import com.nextyu.sso.server.domain.LoginUser;
@@ -26,8 +27,10 @@ public class CaptchaAuthenticationHandlerImpl implements AuthenticationHandler {
             return null;
         }
 
+        String password = credential.getParameter("password");
+        String encode = MD5.encode(MD5.encode("123") + sessionCode);
 
-        if ("admin".equals(credential.getParameter("name")) && "123".equals(credential.getParameter("password"))) {
+        if ("admin".equals(credential.getParameter("name")) && password.equals(encode)) {
             DemoLoginUser loginUser = new DemoLoginUser();
             loginUser.setLoginName("admin");
             return loginUser;
