@@ -107,7 +107,6 @@ public class TokenManager {
      */
     public static LoginUser validate(String vt) {
         Token token = DATA_MAP.get(vt);
-        System.out.println(DATA_MAP);
         return token == null ? null : token.loginUser;
     }
 
